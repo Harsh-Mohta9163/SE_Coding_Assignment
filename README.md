@@ -7,6 +7,19 @@ This project is a C++ implementation of a banking system based on a UML class di
 - A C++ compiler that supports C++17 or later (e.g., g++, clang++).
 - `make` utility (optional, but recommended for easy compilation).
 
+## Cloning the Repository
+
+To get started with this project, you can clone the repository using the following command:
+
+```sh
+git clone https://github.com/Harsh-Mohta9163/SE_Coding_Assignment.git
+```
+
+After cloning, navigate to the project directory:
+
+```sh
+cd SE_Coding_Assignment
+```
 
 ## Compilation and Execution
 
@@ -48,4 +61,3 @@ For a more convenient build process, you can use the provided `Makefile`.
     make clean
     ```
 
-*/
