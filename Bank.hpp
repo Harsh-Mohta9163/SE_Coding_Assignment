@@ -2,12 +2,14 @@
 #include "helpers.hpp"
 #include "Branch.hpp"
 
+using namespace std;
+
 class Bank {
 private:
-    std::string bankName;
-    std::vector<std::shared_ptr<Branch>> branches;
+    string bankName;
+    vector<shared_ptr<Branch>> branches;
 public:
-    Bank(std::string name);
-    void addBranch(std::shared_ptr<Branch> branch);
-    std::string getBankName() const;
+    Bank(string name);
+    void addBranch(shared_ptr<Branch> branch);
+    string getBankName() const;
 };

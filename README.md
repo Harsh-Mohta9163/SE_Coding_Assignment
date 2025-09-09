@@ -7,13 +7,6 @@ This project is a C++ implementation of a banking system based on a UML class di
 - A C++ compiler that supports C++17 or later (e.g., g++, clang++).
 - `make` utility (optional, but recommended for easy compilation).
 
-## File Structure
-
-The project is organized into header (.hpp) and source (.cpp) files for each class, along with a `main.cpp` for the demonstration.
-
-- `*.hpp`: Header files with class declarations.
-- `*.cpp`: Source files with class implementations.
-- `main.cpp`: The main entry point and demo logic.
 
 ## Compilation and Execution
 

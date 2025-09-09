@@ -3,15 +3,17 @@
 #include "Account.hpp"
 #include "Customer.hpp"
 
+using namespace std;
+
 class Branch {
 private:
-    std::string BranchID;
-    std::string Location;
-    std::vector<std::shared_ptr<Account>> accounts;
+    string BranchID;
+    string Location;
+    vector<shared_ptr<Account>> accounts;
 
 public:
-    Branch(std::string id, std::string loc);
-    std::string getLocation() const;
-    void OpenAccount(std::shared_ptr<Account> account, std::shared_ptr<Customer> customer);
-    void CloseAccount(std::shared_ptr<Account> account);
+    Branch(string id, string loc);
+    string getLocation() const;
+    void OpenAccount(shared_ptr<Account> account, shared_ptr<Customer> customer);
+    void CloseAccount(shared_ptr<Account> account);
 };

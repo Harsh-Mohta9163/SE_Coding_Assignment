@@ -1,55 +1,57 @@
 #include "Account.hpp"
 #include "Transaction.hpp" // Full include here
 
-Account::Account(std::string accNumber, double initialBalance)
+using namespace std;
+
+Account::Account(string accNumber, double initialBalance)
     : accountNumber(accNumber), balance(initialBalance) {}
 
-std::string Account::getAccountNumber() const {
+string Account::getAccountNumber() const {
     return this->accountNumber;
 }
 
 double Account::getBalance() {
-    std::cout << "Balance for A/C " << this->accountNumber << ": $" 
-              << std::fixed << std::setprecision(2) << this->balance << std::endl;
+    cout << "Balance for A/C " << this->accountNumber << ": Rs." 
+              << fixed << setprecision(2) << this->balance << endl;
     return this->balance;
 }
 
 void Account::deposit(double amount) {
     if (amount > 0) {
         this->balance += amount;
-        std::cout << "Deposited $" << std::fixed << std::setprecision(2) << amount
-                  << " to A/C " << this->accountNumber << ". New Balance: $" 
-                  << this->balance << std::endl;
+        cout << "Deposited Rs." << fixed << setprecision(2) << amount
+                  << " to A/C " << this->accountNumber << ". New Balance: Rs." 
+                  << this->balance << endl;
     } else {
-        std::cout << "Deposit amount must be positive." << std::endl;
+        cout << "Deposit amount must be positive." << endl;
     }
 }
 
 void Account::withdraw(double amount) {
     if (amount <= 0) {
-        std::cout << "Withdrawal amount must be positive." << std::endl;
+        cout << "Withdrawal amount must be positive." << endl;
     } else if (this->balance >= amount) {
         this->balance -= amount;
-        std::cout << "Withdrew $" << std::fixed << std::setprecision(2) << amount
-                  << " from A/C " << this->accountNumber << ". New Balance: $" 
-                  << this->balance << std::endl;
+        cout << "Withdrew Rs." << fixed << setprecision(2) << amount
+                  << " from A/C " << this->accountNumber << ". New Balance: Rs." 
+                  << this->balance << endl;
     } else {
-        std::cout << "Insufficient funds for withdrawal from A/C " << this->accountNumber << std::endl;
+        cout << "Insufficient funds for withdrawal from A/C " << this->accountNumber << endl;
     }
 }
 
-void Account::transferFunds(std::shared_ptr<Account> toAccount, double amount) {
+void Account::transferFunds(shared_ptr<Account> toAccount, double amount) {
     if (this->balance >= amount) {
         // Here we call the virtual withdraw/deposit methods
         this->withdraw(amount);
         toAccount->deposit(amount);
-        std::cout << "Successfully transferred $" << std::fixed << std::setprecision(2) << amount
-                  << " from A/C " << this->accountNumber << " to A/C " << toAccount->getAccountNumber() << std::endl;
+        cout << "Successfully transferred Rs." << fixed << setprecision(2) << amount
+                  << " from A/C " << this->accountNumber << " to A/C " << toAccount->getAccountNumber() << endl;
     } else {
-        std::cout << "Transfer failed due to insufficient funds in A/C " << this->accountNumber << std::endl;
+        cout << "Transfer failed due to insufficient funds in A/C " << this->accountNumber << endl;
     }
 }
 
-void Account::addTransaction(std::shared_ptr<Transaction> t) {
+void Account::addTransaction(shared_ptr<Transaction> t) {
     this->transactions.push_back(t);
 }

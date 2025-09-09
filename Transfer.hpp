@@ -1,8 +1,10 @@
 #pragma once
 #include "Transaction.hpp"
 
+using namespace std;
+
 class Transfer : public Transaction {
 public:
-    Transfer(std::string id, double amount, std::shared_ptr<Account> from, std::shared_ptr<Account> to);
+    Transfer(string id, double amount, shared_ptr<Account> from, shared_ptr<Account> to);
     void processTransaction() override;
 };

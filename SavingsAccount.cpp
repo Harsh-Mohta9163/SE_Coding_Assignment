@@ -1,6 +1,8 @@
 #include "SavingsAccount.hpp"
 
-SavingsAccount::SavingsAccount(std::string accountNumber, double initialBalance, double rate)
+using namespace std;
+
+SavingsAccount::SavingsAccount(string accountNumber, double initialBalance, double rate)
     : Account(accountNumber, initialBalance), interestRate(rate) {}
 
 double SavingsAccount::getInterestRate() const {
@@ -10,6 +12,6 @@ double SavingsAccount::getInterestRate() const {
 void SavingsAccount::applyInterest() {
     double interest = balance * interestRate / 100.0;
     deposit(interest);
-    std::cout << "Applied interest of $" << std::fixed << std::setprecision(2) << interest 
-              << " to Savings Account " << getAccountNumber() << std::endl;
+    cout << "Applied interest of Rs." << fixed << setprecision(2) << interest 
+              << " to Savings Account " << getAccountNumber() << endl;
 }

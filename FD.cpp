@@ -1,6 +1,8 @@
 #include "FD.hpp"
 
-FD::FD(std::string accountNumber, double minBalance)
+using namespace std;
+
+FD::FD(string accountNumber, double minBalance)
     : Account(accountNumber, minBalance), MinBalance(minBalance) {}
 
 double FD::getMinBalance() const {
@@ -8,5 +10,5 @@ double FD::getMinBalance() const {
 }
 
 void FD::withdraw(double amount) {
-    std::cout << "Withdrawals are not allowed from a Fixed Deposit account." << std::endl;
+    cout << "Withdrawals are not allowed from a Fixed Deposit account." << endl;
 }

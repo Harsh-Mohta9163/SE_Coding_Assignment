@@ -11,18 +11,18 @@ int main() {
     std::cout << "--- Banking System Demo Start ---" << std::endl;
 
     // 1. Create a Bank
-    auto myBank = std::make_shared<Bank>("Gemini International Bank");
+    auto myBank = std::make_shared<Bank>("HDFC Bank");
     std::cout << "Welcome to " << myBank->getBankName() << std::endl;
 
     // 2. Create multiple Branches (1:N Bank-Branch relationship)
-    auto branch1 = std::make_shared<Branch>("B001", "Downtown Central");
-    auto branch2 = std::make_shared<Branch>("B002", "Suburb Square");
+    auto branch1 = std::make_shared<Branch>("B001", "Electronic City");
+    auto branch2 = std::make_shared<Branch>("B002", "Silk Board");
     myBank->addBranch(branch1);
     myBank->addBranch(branch2);
     std::cout << "\n----------------------------------\n" << std::endl;
 
     // 3. Create a Customer
-    auto customer1 = std::make_shared<Customer>("johndoe", "pass123", "555-1234", "j.doe@email.com");
+    auto customer1 = std::make_shared<Customer>("Harsh", "pass123", "9163729901", "harsh@email.com");
     customer1->registerUser();
     customer1->login();
     std::cout << "\n----------------------------------\n" << std::endl;
