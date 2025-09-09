@@ -34,7 +34,7 @@ int main() {
     customer2->login();
     cout << "\n----------------------------------\n" << endl;
 
-    // 4. Open multiple accounts for customer1 (1:N Customer-Account relationship)
+    // 4. Open multiple accounts for customer1 (M:N Customer-Account relationship)
     auto sa1 = make_shared<SavingsAccount>("SA1001", 5000.0, 2.5);
     auto ca1 = make_shared<CheckingAccount>("CA2001", 1000.0, 500.0);
     
@@ -100,6 +100,46 @@ int main() {
     sa1->getBalance();
     cout << customer2->getUsername() << "'s savings account:" << endl;
     sa2->getBalance();
+
+    cout << "\n----------------------------------\n" << endl;
+    
+    // 6. Demonstrate Joint Account functionality
+    cout << "--- Creating Joint Account ---" << endl;
+    
+    // Create a third customer for joint account demonstration
+    auto customer3 = make_shared<Customer>("Rajesh", "pass789", "9123456789", "rajesh@email.com");
+    customer3->registerUser();
+    customer3->login();
+    
+    // Create a joint savings account between customer1 and customer3
+    auto jointSavings = make_shared<SavingsAccount>("JSA001", 10000.0, 3.0);
+    vector<shared_ptr<Customer>> jointHolders = {customer1, customer3};
+    
+    branch1->OpenJointAccount(jointSavings, jointHolders);
+    
+    cout << "\nJoint account details:" << endl;
+    cout << "Account Number: " << jointSavings->getAccountNumber() << endl;
+    cout << "Account Holders: " << jointSavings->getAccountHolderNames() << endl;
+    cout << "Is Joint Account: " << (jointSavings->isJointAccount() ? "Yes" : "No") << endl;
+    cout << "Number of Account Holders: " << jointSavings->getAccountHolders().size() << endl;
+    jointSavings->getBalance();
+    
+    cout << "\nBoth customers now have access to the joint account:" << endl;
+    cout << customer1->getUsername() << " has " << customer1->getAccountCount() << " accounts." << endl;
+    cout << customer3->getUsername() << " has " << customer3->getAccountCount() << " accounts." << endl;
+
+    // Demonstrate joint account operations(Showing M:N relation between Customer and Account)
+    cout << "\n--- Joint Account Operations ---" << endl;
+    cout << "Customer " << customer1->getUsername() << " deposits Rs. 2000 to joint account:" << endl;
+    jointSavings->deposit(2000.0);
+    
+    cout << "\nCustomer " << customer3->getUsername() << " withdraws Rs. 1500 from joint account:" << endl;
+    jointSavings->withdraw(1500.0);
+    
+    cout << "\nApplying interest to joint account:" << endl;
+    jointSavings->applyInterest();
+    
+    customer3->logout();
 
     cout << "\n----------------------------------\n" << endl;
     customer1->logout();

@@ -15,5 +15,6 @@ public:
     Branch(string id, string loc);
     string getLocation() const;
     void OpenAccount(shared_ptr<Account> account, shared_ptr<Customer> customer);
+    void OpenJointAccount(shared_ptr<Account> account, vector<shared_ptr<Customer>> customers);
     void CloseAccount(shared_ptr<Account> account);
 };
